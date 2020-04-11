@@ -1,6 +1,7 @@
 # .github/workflows/test.yml
 name: Tests
 on: push
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -9,10 +10,18 @@ jobs:
         python-version: ['3.6', '3.7', '3.8']
     name: Python ${{ matrix.python-version }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Install poetry and run tests
-      run: |
-       pip3 install setuptools
-       pip3 install poetry
-       poetry install
-    - run: nox
+    - uses: actions/checkout@master
+    - name: Install
+      uses: abatilo/actions-poetry@v1.5.0
+      with:
+        python_version: ${{ matrix.python-version}}
+        poetry_version: 1.0.5
+        working_directory: ./working_dir # Optional, defaults to '.'
+        args: install
+    - name: Run nox
+      uses: abatilo/actions-poetry@v1.5.0
+      with:
+        python_version: ${{ matrix-python-version }}
+        poetry_version: 1.0.5
+        working_directory: ./working_dir
+        args: nox 
