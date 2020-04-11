@@ -17,9 +17,9 @@ jobs:
         python_version: ${{ matrix.python-version}}
         poetry_version: 1.0.5
         args: install
+    - name: Install nox
+      run: pip install nox==2019.11.9
+    - name: Install dependencies 
+      run: poetry install
     - name: Run nox
-      uses: abatilo/actions-poetry@v1.5.0
-      with:
-        python_version: ${{ matrix.python-version }}
-        poetry_version: 1.0.5
-        args: nox 
+      run: nox
