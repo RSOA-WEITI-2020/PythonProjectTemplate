@@ -11,10 +11,10 @@ jobs:
     name: Python ${{ matrix.python-version }}
     steps:
     - uses: actions/checkout@master
-    - name: Install poetry and dependencies
-      uses: abatilo/actions-poetry@v1.5.0
-      with:
-        python_version: ${{ matrix.python-version}}
-        poetry_version: 1.0.5
-        args: install
-      run: nox
+    - uses: actions/checkout@master
+    - uses: actions/setup-python@v1
+    - uses: dschep/install-poetry-action@v1.3
+      with: 
+        version: 1.0.5
+    - run: poetry install
+    - run: nox
