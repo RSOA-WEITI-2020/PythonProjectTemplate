@@ -14,5 +14,5 @@ jobs:
       run: |
        pip3 install setuptools
        pip3 install poetry
-       poetry install
+       python3 -m poetry install
     - run: nox
