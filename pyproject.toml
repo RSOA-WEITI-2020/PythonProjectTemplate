@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.7"
 requests = "^2.23.0"
 pytest = "^5.4.1"
+nox = "^2019.11.9"
 
 [tool.poetry.dev-dependencies]
 
