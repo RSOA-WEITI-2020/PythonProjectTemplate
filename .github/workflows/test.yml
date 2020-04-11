@@ -18,4 +18,8 @@ jobs:
         poetry_version: 1.0.5
         args: install
     - name: Run tests with nox
-      run: nox
+      uses: abatilo/actions-poetry@v1.5.0
+      with:
+        python_version: ${{ matrix.python-version }}
+        poetry_version: 1.0.5
+        args: nox
